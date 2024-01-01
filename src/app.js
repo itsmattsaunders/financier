@@ -1,10 +1,9 @@
 import React from 'react';
+import Nav from './components/navigation/nav.js';
 
 const App = () => {
   return (
-    <div className="p-4">
-      <h1 className="text-blue-500">Hello, Tailwind with React!</h1>
-    </div>
+      <Nav />
   );
 };
 
