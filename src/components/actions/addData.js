@@ -15,7 +15,7 @@ export default function AddData({ isOpen: { isOpen }, setIsOpen }) {
         <div className="fixed inset-0" />
 
         <div className="fixed inset-0 overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden bg-black bg-opacity-50">
             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
               <Transition.Child
                 as={Fragment}
@@ -31,7 +31,7 @@ export default function AddData({ isOpen: { isOpen }, setIsOpen }) {
                     <div className="bg-indigo-700 px-4 py-6 sm:px-6">
                       <div className="flex items-center justify-between">
                         <Dialog.Title className="text-base font-semibold leading-6 text-white">
-                          Panel title
+                          Add Information
                         </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
                           <button
@@ -47,7 +47,7 @@ export default function AddData({ isOpen: { isOpen }, setIsOpen }) {
                       </div>
                       <div className="mt-1">
                         <p className="text-sm text-indigo-300">
-                          Lorem, ipsum dolor sit amet consectetur adipisicing elit aliquam ad hic recusandae soluta.
+                            Easily manage your finances by adding expenses like mortgages, bills, and student loans, or assets such as savings, houses, and investments in stocks and bonds, using the forms below. This simple step helps you track and understand your financial standing, setting the stage for smarter money management.
                         </p>
                       </div>
                     </div>
