@@ -5,8 +5,8 @@ const initialState = {
     "income": [],
     "assets": [],
     "liabilities": [],
-    "financialScoreNew": {},
-    "financialScoreOld": {}
+    "financialScoreNew": [],
+    "financialScoreOld": []
   }
 }
 
@@ -20,7 +20,7 @@ export function FinancialProvider({ children }) {
             ...prevState,
             financialOverview: {
               ...prevState.financialOverview,
-              [category]: [...prevState.financialOverview[category], newData] 
+              [category]: [...(prevState.financialOverview[category] || []), newData] 
             }
         }));
     };
