@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon, PlusCircleIcon } from '@heroicons/react/24/outline';
+import { NavLink } from 'react-router-dom';
 import AddData from '../actions/addData.js';
 
 function classNames(...classes) {
@@ -26,29 +27,52 @@ export default function Nav() {
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    <a href="#" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">
-                      Dashboard
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                    >
-                      Team
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                    >
-                      Projects
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                    >
-                      Calendar
-                    </a>
-                  </div>
+                  <ul className="flex space-x-4">
+                    <li>
+                        <NavLink 
+                            to="/"
+                            className={({ isActive }) =>
+                            isActive
+                              ? "rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                              : "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                          }>
+                            Home Page
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                            to="/overview"
+                            className={({ isActive }) =>
+                            isActive
+                              ? "rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                              : "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                          }>
+                            Overview
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                            to="/savings-and-assets"
+                            className={({ isActive }) =>
+                            isActive
+                              ? "rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                              : "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                          }>
+                            Savings & Assets
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                            to="/liabilities"
+                            className={({ isActive }) =>
+                            isActive
+                              ? "rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                              : "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                          }>
+                            Liabilities
+                        </NavLink>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:block">
