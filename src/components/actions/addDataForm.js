@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useContext } from 'react';
 import { FinancialContext } from '../../financialContext.js'; 
-import { Listbox, Transition } from '@headlessui/react'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import { Listbox, Transition } from '@headlessui/react';
+import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import AddAssetData from './addAssetData.js';
+import AddExpenseData from './addExpenseData.js';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -37,12 +38,18 @@ export default function AddDataForm({ isOpen: { isOpen }, setIsOpen }) {
     const type = selected.type;
 
     updateFinancialData(newAsset, type);
+
+    if(type === 'asset'){
+      setType('savings');
+    } else if (type === 'expense') {
+      setType('mortgage');
+    }
+
     setName('');
     setValue('');
     setRate('');
     setStartDate('');
     setEndDate('');
-    setType('savings');
     setIncome('');
     setExpense('');
     setSelected(selections[0]);
@@ -55,7 +62,6 @@ export default function AddDataForm({ isOpen: { isOpen }, setIsOpen }) {
   
   return (
     <form onSubmit={handleFormSubmit}>
-    {/* TODO: Don't love this but maybe I can change it later?? */}
     <Listbox value={selected} onChange={handleSelectionChange}>
       {({ open }) => (
         <>
@@ -103,21 +109,45 @@ export default function AddDataForm({ isOpen: { isOpen }, setIsOpen }) {
       )}
     </Listbox>
 
-    {selected.type === 'assets' ? 
-      <AddAssetData   
-        name={name}
-        setName={setName}
-        value={value}
-        setValue={setValue}
-        rate={rate}
-        setRate={setRate}
-        startDate={startDate}
-        setStartDate={setStartDate}
-        endDate={endDate}
-        setEndDate={setEndDate}
-        type={type}
-        setType={setType}/> : null }
-      
+    { (() => {
+        switch (selected.type) {
+            case 'assets':
+                return (
+                    <AddAssetData
+                        name={name}
+                        setName={setName}
+                        value={value}
+                        setValue={setValue}
+                        rate={rate}
+                        setRate={setRate}
+                        startDate={startDate}
+                        setStartDate={setStartDate}
+                        endDate={endDate}
+                        setEndDate={setEndDate}
+                        type={type}
+                        setType={setType}
+                    />
+                );
+            case 'expense':
+                  return (
+                    <AddExpenseData 
+                      name={name}
+                      setName={setName}
+                      value={value}
+                      setValue={setValue}
+                      rate={rate}
+                      setRate={setRate}
+                      endDate={endDate}
+                      setEndDate={setEndDate}
+                      type={type}
+                      setType={setType}
+                    />
+                  )
+            default:
+                return null; 
+                
+        }
+    })() }
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button onClick={() => setIsOpen(!isOpen)} type="button" className="text-sm font-semibold leading-6 text-gray-900">
           Cancel
